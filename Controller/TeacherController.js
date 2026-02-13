@@ -25,7 +25,7 @@ const createTeacher=async(req,res)=>{
         const resData={
             name:newTeacher.name
         }
-        console.log(resData,"data");
+        console.log(resData,"data");               
         res.send({
             message:"Teacher created successfully",
             data:resData
@@ -109,7 +109,7 @@ const updateTeacher=async(req,res)=>{
 //delete
 const deleteTeacher=async(req,res)=>{
   const id=req.params.teacherid;
-    const TeacherAvailable=await TeacherModel.findById(id);
+    const TeacherAvailable=await TeacherModel.findById(id); //or  await TeacherModel.deleteOne({_id:id});
     if(!TeacherAvailable){
         res.send({
             message:"Not Teacher"

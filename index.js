@@ -2,15 +2,16 @@ const express=require("express");
 const app=express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const port=8000;
+const port=8000;                                            //backend port set as 8000
 require('dotenv').config();
 const url=process.env.MONGO_URL;
 console.log(url,"url");
 const DbConnection=require("./config/ConnectDB");
 const TeacherRouter = require("./Routes/TeacherRoute");
-const cors = require('cors');
 
-app.use(cors({ origin: ['http://localhost:3000'] }));
+//to establish connection btw frontend and backend
+const cors = require('cors');
+app.use(cors({ origin: ['http://localhost:3000'] }));       //frontend runs in port 3000
 
 
 
@@ -19,7 +20,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 DbConnection();
 
-app.use("/teacher",TeacherRouter);
+app.use("/teacher",TeacherRouter);                          //teacher section route
 
 //dAsnOnxqI61p9HFo
 app.listen(port,()=>{
