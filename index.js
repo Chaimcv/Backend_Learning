@@ -6,34 +6,17 @@ const port=3000;
 require('dotenv').config();
 const url=process.env.MONGO_URL;
 console.log(url,"url");
-
-app.get('/',(req,res)=>{
-    res.send("Response obtained");
-});
-app.get('/adminDetails',(req,res)=>{
-   res.send({
-    "name":"Chaithanya",
-    "place":"Clt"
-   });
-});
-app.get('/admin',(req,res)=>{
-   res.send({
-    "name":"Admin",
-    "place":"Clt"
-   });
-});
+const DbConnection=require("./config/ConnectDB");
+const TeacherRouter = require("./Routes/TeacherRoute");
 
 
 // Middleware
 app.use(bodyParser.json());
+DbConnection();
 
-// MongoDB connectionster0
-mongoose.connect(`mongodb+srv://harikumarv9000:5Zd5Gf4UgKvqbj8w@cluster0.xnvxknj.mongodb.net/BZ-USER-DB?retryWrites=true&w=majority`)
-.then(() => console.log("MongoDB connected ✅"))
-.catch(err => console.log("ERROR ❌", err));
-//
+app.use("/teacher",TeacherRouter);
+
 //dAsnOnxqI61p9HFo
 app.listen(port,()=>{
     console.log(`Server running at port${port}`);
 })
-//FirstMongoProject

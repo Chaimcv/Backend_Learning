@@ -1,0 +1,29 @@
+const mongoose=require("mongoose");
+
+const TeacherSchema=mongoose.Schema({
+    name:{
+        type:String,
+        required:true
+    },
+    city:{
+        type:String
+    },
+    pin:{
+        type:String
+    },
+    phoneNumber:{
+        type:Number
+    },
+    subject:{
+        type:String
+    },
+    standard:{
+        type:Number
+    },
+},
+    {
+        Timestamp:true
+    },
+    
+)
+module.exports=mongoose.model("Teachers",TeacherSchema);   //Teachers(Database)
