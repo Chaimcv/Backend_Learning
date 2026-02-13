@@ -1,7 +1,7 @@
 //Teacher manipulation
 const TeacherModel=require("../Models/TeacherModel");
 
-
+                                      //http://127.0.0.1:8000/teacher
 //posting data to db-(teachers)
 const createTeacher=async(req,res)=>{              
     console.log("api called");
