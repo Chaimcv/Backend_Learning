@@ -10,6 +10,7 @@ const DbConnection=require("./config/ConnectDB");
 const TeacherRouter = require("./Routes/TeacherRoute");
 
 
+
 // Middleware
 app.use(express.json());
 app.use(bodyParser.json());
