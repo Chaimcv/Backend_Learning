@@ -2,12 +2,15 @@ const express=require("express");
 const app=express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const port=3000;
+const port=8000;
 require('dotenv').config();
 const url=process.env.MONGO_URL;
 console.log(url,"url");
 const DbConnection=require("./config/ConnectDB");
 const TeacherRouter = require("./Routes/TeacherRoute");
+const cors = require('cors');
+
+app.use(cors({ origin: ['http://localhost:3000'] }));
 
 
 
