@@ -5,7 +5,7 @@ const TeacherModel=require("../Models/TeacherModel");
 //posting data to db-(teachers)
 const createTeacher=async(req,res)=>{              
     console.log("api called");
-    const {name,pin,city,phonenumber,subject,standard}=req.body;   //data from frontend-- api
+    const {name,email,password,pin,city,phonenumber,subject,standard}=req.body;   //data from frontend-- api
       
     if(!name){
         return res.send({
@@ -14,16 +14,23 @@ const createTeacher=async(req,res)=>{
        }
     try{
         const newTeacher=new TeacherModel({  //storing data to db
-           name:name,
-           city:address.city,
-           pin:address.pin,
+           name,    //if both names are same then this is enough
+           Email:email,
+           Password:password,
+           city:city,
+           pin:pin,
+        //    city:address.city,
+        //    pin:address.pin,
            phoneNumber:phonenumber, 
            subject:subject,
           standard:standard
         });
         await newTeacher.save();
         const resData={
-            name:newTeacher.name
+            name:newTeacher.name,
+            email:newTeacher.Email,
+            password:newTeacher.Password
+
         }
         console.log(resData,"data");               
         res.send({
