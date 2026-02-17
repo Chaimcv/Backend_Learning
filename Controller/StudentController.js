@@ -1,5 +1,5 @@
 const StudentModel=require("../Models/StudentsModel");
-const { get } = require("../Routes/StudentsRoute");
+//const { get } = require("../Routes/StudentsRoute");
 
 const createStudent=async(req,res)=>{
      const {name,age,gender,standard,division,address}=req.body; 
