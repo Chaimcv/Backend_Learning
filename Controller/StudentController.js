@@ -2,7 +2,7 @@ const StudentModel=require("../Models/StudentsModel");
 //const { get } = require("../Routes/StudentsRoute");
 
 const createStudent=async(req,res)=>{
-     const {name,age,gender,standard,division,address}=req.body; 
+     const {name,age,gender,standard,guardian,guardian_phonenumber,division,address,pincode}=req.body; 
 
 
  try{
@@ -37,9 +37,9 @@ const createStudent=async(req,res)=>{
 //get data from db 
 const getStudents=async(req,res)=>{
     try{
-        const StudentData=await TeacherModel.find();
+        const StudentData=await StudentModel.find();
         res.send({
-            message:"Teachers data fetched successfully",
+            message:"Students data fetched successfully",
             data:StudentData
     })
     }catch(error){
