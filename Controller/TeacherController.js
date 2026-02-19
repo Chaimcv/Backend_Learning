@@ -127,6 +127,34 @@ const deleteTeacher=async(req,res)=>{
     message:"Teacher data deleted successfully"
    })
 }
+//Login
+const TeacherLogin=async(req,res)=>{
+    const{email,password}=req.body;
+    try {
+        if(!email||!password){
+            res.send({
+                message:"Enter Valid email and password"
+            })
+        }
+        const fetchedTeacherData=await TeacherModel.findOne({email:email});
+        if(!fetchedTeacherData){
+            res.send({
+                message:"No matching email found"
+            })
+        }
+        if(fetchedTeacherData.password===password)
+        {
+            res.send({
+                message:"Login Successful",
+                data:{
+                    email:fetchedTeacherData.email
+                    //image
+                }
+            })
+        }
+    } catch (error) {
+        
+    }
+}
 
-
-module.exports={createTeacher,getTeachers,getTeacherById,updateTeacher,deleteTeacher}
+module.exports={createTeacher,getTeachers,getTeacherById,updateTeacher,deleteTeacher,TeacherLogin}
