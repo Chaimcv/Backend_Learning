@@ -1,10 +1,16 @@
 const StudentModel=require("../Models/StudentsModel");
 //const { get } = require("../Routes/StudentsRoute");
+const generator=require("generate-password");
+
 
 const createStudent=async(req,res)=>{
-     const {name,age,email,password,gender,standard,guardian,guardian_phonenumber,division,address,pincode}=req.body; 
+     const {name,age,email,gender,standard,guardian,guardian_phonenumber,division,address,pincode}=req.body; 
 
 //password generation
+const password = generator.generate({
+    length: 10,
+    numbers: true
+});
  try{
         const newStudent=new StudentModel({  //storing data to db
            Name:name,

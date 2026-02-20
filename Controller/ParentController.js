@@ -22,7 +22,8 @@ const createParent=async(req,res)=>{
         student_id:studentId,
         phonenumber,
         address,
-        pincode
+        pincode,
+        password
        });
        await newParent.save();
        const resData={
